@@ -8,7 +8,7 @@ import java.io.IOException;
 public class ScrapePDF {
     public static void scrape(File path) throws IOException {
         PDDocument doc = PDDocument.load(path);
-        Long id = doc.getDocumentId();
+        int id = doc.getNumberOfPages();
         System.out.println(id);
     }
 }

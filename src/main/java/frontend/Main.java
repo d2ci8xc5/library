@@ -22,13 +22,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-
-        File fh = new File("/home/d2ci8xc5/Desktop/sample.pdf");
-        try {
-            ScrapePDF.scrape(fh);
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
         launch(args);
     }
 }
