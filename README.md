@@ -1,1 +1,2 @@
 # library
+[![Build Status](https://travis-ci.org/d2ci8xc5/library.svg?branch=master)](https://travis-ci.org/d2ci8xc5/library) [![codecov](https://codecov.io/gh/d2ci8xc5/library/branch/master/graph/badge.svg)](https://codecov.io/gh/d2ci8xc5/library)
