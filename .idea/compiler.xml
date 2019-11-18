@@ -19,8 +19,8 @@
         <module name="library" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel target="11">
-      <module name="library" target="11" />
+    <bytecodeTargetLevel target="1.8">
+      <module name="library" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>
