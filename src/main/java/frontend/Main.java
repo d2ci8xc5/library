@@ -1,6 +1,6 @@
 package frontend;
 
-import core.task.ScrapePDF;
+import core.task.ScrapeISBN;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
