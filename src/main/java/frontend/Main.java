@@ -1,10 +1,14 @@
 package frontend;
 
+import core.file.ScrapePDF;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+
+import java.io.File;
+import java.io.IOException;
 
 public class Main extends Application {
 
@@ -18,6 +22,13 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+
+        File fh = new File("/home/d2ci8xc5/Desktop/sample.pdf");
+        try {
+            ScrapePDF.scrape(fh);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         launch(args);
     }
 }
