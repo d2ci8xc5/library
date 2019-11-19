@@ -1,4 +1,3 @@
-
 import core.task.ScrapeISBN;
 import javafx.application.Platform;
 import org.apache.pdfbox.pdmodel.PDDocument;
@@ -48,11 +47,10 @@ public class TestScrapeISBN {
         }
 
         ScrapeISBN task = new ScrapeISBN(new File(PATH));
-        String output = null;
-        task.setOnSucceeded((succeedEvent) -> {
-            assertEquals(task.getValue(), "1111");
+        Thread th = new Thread(task);
+        th.start();
+        Platform.runLater(task);
 
-        });
     }
 
     /***

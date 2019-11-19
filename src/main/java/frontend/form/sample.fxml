@@ -8,34 +8,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controller.Controller">
    <children>
       <VBox layoutX="107.0" layoutY="70.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <MenuBar>
               <menus>
-                <Menu mnemonicParsing="false" text="Actions">
+                <Menu fx:id="actions" mnemonicParsing="false" text="Actions">
                   <items>
-                        <MenuItem mnemonicParsing="false" text="Add" />
-                        <MenuItem mnemonicParsing="false" text="Remove" />
-                    <MenuItem mnemonicParsing="false" text="Close" />
+                        <MenuItem fx:id="add" mnemonicParsing="false" text="Add" />
+                        <MenuItem fx:id="remove" mnemonicParsing="false" text="Remove" />
+                    <MenuItem fx:id="close" mnemonicParsing="false" text="Close" />
                   </items>
                 </Menu>
-                  <Menu mnemonicParsing="false" text="Help">
+                  <Menu fx:id="help" mnemonicParsing="false" text="Help">
                     <items>
-                      <MenuItem mnemonicParsing="false" text="About" />
+                      <MenuItem fx:id="about" mnemonicParsing="false" text="About" />
                     </items>
                   </Menu>
               </menus>
             </MenuBar>
-            <TableView prefHeight="447.0" prefWidth="600.0">
+            <TableView fx:id="table" prefHeight="447.0" prefWidth="600.0">
               <columns>
-                <TableColumn prefWidth="127.0" text="Title" />
-                <TableColumn prefWidth="133.0" text="Author" />
-                  <TableColumn prefWidth="110.0" text="ISBN" />
-                  <TableColumn prefWidth="107.0" text="Rating" />
-                  <TableColumn prefWidth="122.0" text="Size" />
+                <TableColumn fx:id="title" prefWidth="127.0" text="Title" />
+                <TableColumn fx:id="author" prefWidth="133.0" text="Author" />
+                  <TableColumn fx:id="isbn" prefWidth="110.0" text="ISBN" />
+                  <TableColumn fx:id="rating" prefWidth="107.0" text="Rating" />
+                  <TableColumn fx:id="size" prefWidth="122.0" text="Size" />
               </columns>
             </TableView>
          </children>
