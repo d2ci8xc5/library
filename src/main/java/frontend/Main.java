@@ -22,6 +22,8 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
+        ScrapeISBN isbn = new ScrapeISBN(new File("./sample.pdf"));
+        isbn.run();
         launch(args);
     }
 }
