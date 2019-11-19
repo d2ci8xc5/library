@@ -5,6 +5,7 @@
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
@@ -28,6 +29,7 @@
                   </Menu>
               </menus>
             </MenuBar>
+            <TextField fx:id="search" promptText="Enter a search term or tag" />
             <TableView fx:id="table" prefHeight="447.0" prefWidth="600.0">
               <columns>
                 <TableColumn fx:id="title" prefWidth="127.0" text="Title" />

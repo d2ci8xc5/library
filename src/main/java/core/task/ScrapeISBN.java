@@ -14,7 +14,6 @@ import java.util.regex.Pattern;
  */
 public class ScrapeISBN extends Task<String> {
     private File _path;
-
     public ScrapeISBN(File path) {
         _path = path;
     }
@@ -29,12 +28,10 @@ public class ScrapeISBN extends Task<String> {
         // ISBN regex pattern
         final String pattern = "^(?=(?:\\D*\\d){10}(?:(?:\\D*\\d){3})?$)[\\d-]+$";
         Pattern regex = Pattern.compile(pattern);
-
         Matcher matcher = regex.matcher(text);
-        this.updateValue(matcher.group(0));
         // Return matching string or return null
-        //return matcher.find() ? matcher.group(0) : null ;
         if (matcher.find()) {
+            System.out.println(matcher.group(0));
             this.updateValue(matcher.group(0));
             return matcher.group(0);
         } else {

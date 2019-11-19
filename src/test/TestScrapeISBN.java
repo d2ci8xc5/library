@@ -1,5 +1,7 @@
 import core.task.ScrapeISBN;
 import javafx.application.Platform;
+import javafx.concurrent.WorkerStateEvent;
+import javafx.event.EventHandler;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
 import org.apache.pdfbox.pdmodel.PDPageContentStream;
@@ -46,10 +48,25 @@ public class TestScrapeISBN {
             fail();
         }
 
+        final String[] result = new String[1];
         ScrapeISBN task = new ScrapeISBN(new File(PATH));
+        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED,
+                new EventHandler<WorkerStateEvent>() {
+                    @Override
+                    public void handle(WorkerStateEvent event) {
+                        result[0] = task.getValue();
+                    }
+                });
         Thread th = new Thread(task);
-        th.start();
-        Platform.runLater(task);
+        th.run();
+        try {
+            th.join(50000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        System.out.println(result[0]);
+
+
 
     }
 
