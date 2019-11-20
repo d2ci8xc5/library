@@ -1,9 +1,8 @@
 language: java
 sudo: false # faster builds
 
-before_script:
-  - pip install --user codecov
-
-after_success:
-  - codecov
+script:
+  - "mvn clean"
+  - "mvn install"
+  - "mvn test"
 
