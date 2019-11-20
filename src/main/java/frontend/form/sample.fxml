@@ -1,25 +1,44 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controller.Controller">
    <children>
-      <VBox layoutX="165.0" layoutY="74.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox layoutX="107.0" layoutY="70.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <TreeTableView prefHeight="484.0" prefWidth="600.0">
+            <MenuBar>
+              <menus>
+                <Menu fx:id="actions" mnemonicParsing="false" text="Actions">
+                  <items>
+                        <MenuItem fx:id="add" mnemonicParsing="false" text="Add" />
+                        <MenuItem fx:id="remove" mnemonicParsing="false" text="Remove" />
+                    <MenuItem fx:id="close" mnemonicParsing="false" text="Close" />
+                  </items>
+                </Menu>
+                  <Menu fx:id="help" mnemonicParsing="false" text="Help">
+                    <items>
+                      <MenuItem fx:id="about" mnemonicParsing="false" text="About" />
+                    </items>
+                  </Menu>
+              </menus>
+            </MenuBar>
+            <TextField fx:id="search" promptText="Enter a search term or tag" />
+            <TableView fx:id="table" prefHeight="447.0" prefWidth="600.0">
               <columns>
-                <TreeTableColumn fx:id="title" prefWidth="75.0" text="Title" />
-                <TreeTableColumn fx:id="author" prefWidth="75.0" text="Author" />
-                  <TreeTableColumn fx:id="last_opened" prefWidth="113.0" text="Last Opened" />
-                  <TreeTableColumn fx:id="rating" minWidth="6.0" prefWidth="86.0" text="Rating" />
-                  <TreeTableColumn fx:id="tags" prefWidth="75.0" text="Tags" />
-                  <TreeTableColumn fx:id="size" prefWidth="75.0" text="Size" />
+                <TableColumn fx:id="title" prefWidth="127.0" text="Title" />
+                <TableColumn fx:id="author" prefWidth="133.0" text="Author" />
+                  <TableColumn fx:id="isbn" prefWidth="110.0" text="ISBN" />
+                  <TableColumn fx:id="rating" prefWidth="107.0" text="Rating" />
+                  <TableColumn fx:id="size" prefWidth="122.0" text="Size" />
               </columns>
-            </TreeTableView>
+            </TableView>
          </children>
       </VBox>
    </children>

@@ -9,4 +9,8 @@ public class Book {
     private URL _path;
     private Image _cover;
 
+
+    public Book bookFromDatabase() {
+        return new Book();
+    }
 }
