@@ -1,5 +1,6 @@
 package frontend.controller;
 
+import core.api.OpenLibrary;
 import core.task.ScrapeISBN;
 import javafx.application.Platform;
 import javafx.concurrent.WorkerStateEvent;
@@ -50,8 +51,14 @@ public class Controller {
                                 public void handle(WorkerStateEvent event) {
                                     result[0] = scrape.getValue();
 
-                                    // perform api lookup
+                                    // ISBN not found
+                                    if(result[0] == null) {
+                                        Alert alert = new Alert(Alert.AlertType.ERROR);
+                                        alert.setContentText("No ISBN number found");
+                                    }
 
+                                    // perform api lookup
+                                    OpenLibrary api = new OpenLibrary(result[0]);
 
                                 }
                             });
