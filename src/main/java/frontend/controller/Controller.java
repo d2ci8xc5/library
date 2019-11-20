@@ -50,8 +50,9 @@ public class Controller {
                                 public void handle(WorkerStateEvent event) {
                                     result[0] = scrape.getValue();
 
-                                    System.out.println("adfasdf" + result[0]);
                                     // perform api lookup
+
+
                                 }
                             });
                     Platform.runLater(scrape);

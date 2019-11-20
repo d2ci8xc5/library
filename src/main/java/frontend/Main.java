@@ -9,8 +9,13 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class Main extends Application {
+
+    // Thread pool worker
+    public static ExecutorService worker = Executors.newSingleThreadExecutor();
 
     @Override
     public void start(Stage primaryStage) throws Exception{
@@ -22,8 +27,6 @@ public class Main extends Application {
 
 
     public static void main(String[] args) {
-        ScrapeISBN isbn = new ScrapeISBN(new File("./sample.pdf"));
-        isbn.run();
         launch(args);
     }
 }
