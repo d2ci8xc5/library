@@ -2,6 +2,7 @@ package frontend.controller;
 
 import core.task.ScrapeISBN;
 import javafx.application.Platform;
+import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
@@ -38,12 +39,25 @@ public class Controller {
         }));
 
         add.setOnAction(event -> {
-            FileChooser fc = new FileChooser();
-            File file = fc.showOpenDialog(new Stage());
-            Platform.runLater(new ScrapeISBN(file));
-        });
+                    FileChooser fc = new FileChooser();
+                    File file = fc.showOpenDialog(new Stage());
 
-        search.setOnKeyPressed(new EventHandler<KeyEvent>() {
+                    ScrapeISBN scrape = new ScrapeISBN(file);
+                    final String[] result = new String[1];
+                    scrape.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED,
+                            new EventHandler<WorkerStateEvent>() {
+                                @Override
+                                public void handle(WorkerStateEvent event) {
+                                    result[0] = scrape.getValue();
+
+                                    System.out.println("adfasdf" + result[0]);
+                                    // perform api lookup
+                                }
+                            });
+                    Platform.runLater(scrape);
+                });
+
+            search.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode() == KeyCode.ENTER) {

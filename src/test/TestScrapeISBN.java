@@ -1,6 +1,7 @@
 import core.task.ScrapeISBN;
 import javafx.application.Platform;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.embed.swing.JFXPanel;
 import javafx.event.EventHandler;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -23,11 +24,13 @@ public class TestScrapeISBN {
     private static String ISBN = "9780062510105";
     private static String PATH = "./src/main/resources/sample.pdf";
 
+
     /***
      * Test the retrieval of an ISBN number from a created PDF document
      */
     @Test
     public void scrape() {
+        // Mark thread as JavaFx thread
         PDDocument tempPDF = new PDDocument();
         try {
             PDPage page = new PDPage();
@@ -48,26 +51,25 @@ public class TestScrapeISBN {
             fail();
         }
 
+        ScrapeISBN scrape = new ScrapeISBN(new File(PATH));
         final String[] result = new String[1];
-        ScrapeISBN task = new ScrapeISBN(new File(PATH));
-        task.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED,
+        scrape.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED,
                 new EventHandler<WorkerStateEvent>() {
                     @Override
                     public void handle(WorkerStateEvent event) {
-                        result[0] = task.getValue();
+                        result[0] = scrape.getValue();
+                        assertEquals(result[0], ISBN);
                     }
                 });
-        Thread th = new Thread(task);
-        th.run();
+
+        // Start task on new thread and wait for it to join
+        Thread thr = new Thread(scrape);
+        thr.start();
         try {
-            th.join(50000);
+            thr.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        System.out.println(result[0]);
-
-
-
     }
 
     /***

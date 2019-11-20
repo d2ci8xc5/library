@@ -31,9 +31,9 @@ public class ScrapeISBN extends Task<String> {
         Matcher matcher = regex.matcher(text);
         // Return matching string or return null
         if (matcher.find()) {
-            System.out.println(matcher.group(0));
-            this.updateValue(matcher.group(0));
-            return matcher.group(0);
+            String result = new String(matcher.group(0));
+            updateValue(result);
+            return result;
         } else {
             return null;
         }
