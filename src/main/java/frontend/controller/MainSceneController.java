@@ -18,7 +18,7 @@ import java.io.File;
 /**
  * Component Controller, allocates user actions to events
  */
-public class Controller {
+public class MainSceneController {
 
     final private String TAGIDENTIFIER = "tag:";
     // Form components

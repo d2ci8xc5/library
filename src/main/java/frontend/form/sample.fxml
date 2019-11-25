@@ -3,13 +3,14 @@
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controller.Controller">
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="frontend.controller.MainSceneController">
    <children>
       <VBox layoutX="107.0" layoutY="70.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -17,8 +18,17 @@
               <menus>
                 <Menu fx:id="actions" mnemonicParsing="false" text="Actions">
                   <items>
-                        <MenuItem fx:id="add" mnemonicParsing="false" text="Add" />
+                        <Menu mnemonicParsing="false" text="Add">
+                          <items>
+                              <MenuItem fx:id="add" mnemonicParsing="false" text="Add File" />
+                            <MenuItem mnemonicParsing="false" text="Add BibTex" />
+                          </items>
+                        </Menu>
                         <MenuItem fx:id="remove" mnemonicParsing="false" text="Remove" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
+                        <MenuItem fx:id="add1" mnemonicParsing="false" text="Import Database" />
+                        <MenuItem fx:id="add2" mnemonicParsing="false" text="Export Database" />
+                        <SeparatorMenuItem mnemonicParsing="false" />
                     <MenuItem fx:id="close" mnemonicParsing="false" text="Close" />
                   </items>
                 </Menu>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ButtonBar?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <SplitPane dividerPositions="0.5" prefHeight="400.0" prefWidth="600.0">
+              <items>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <VBox prefHeight="398.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Title" />
+                              <TextField />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Author" />
+                              <TextField />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
+                              <TextField />
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Path" />
+                              <HBox prefHeight="12.0" prefWidth="295.0">
+                                 <children>
+                                    <TextField prefHeight="26.0" prefWidth="406.0" />
+                                    <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                                      <buttons>
+                                        <Button mnemonicParsing="false" text="Button" />
+                                      </buttons>
+                                    </ButtonBar>
+                                 </children>
+                              </HBox>
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                     <children>
+                        <VBox layoutX="65.0" layoutY="67.0" prefHeight="398.0" prefWidth="295.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                           <children>
+                              <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Bibtex:" />
+                              <TextArea prefHeight="381.0" prefWidth="295.0" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <HBox prefHeight="68.0" prefWidth="600.0">
+               <children>
+                  <ButtonBar prefHeight="40.0" prefWidth="200.0">
+                    <buttons>
+                        <Button mnemonicParsing="false" text="Cancel" />
+                      <Button mnemonicParsing="false" text="Add" />
+                    </buttons>
+                  </ButtonBar>
+               </children></HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -15,15 +15,13 @@ public class OpenLibrary extends Task<Book> {
     @Override
     protected Book call() throws Exception {
         CloseableHttpClient httpclient = HttpClients.createDefault();
-        HttpGet httpget = new HttpGet("http://www.google.com/search?q=httpclient&btnG=Google+Search&aq=f&oq=");
+        HttpGet httpget = new HttpGet("http://openlibrary.org/api/books?bibkeys=ISBN:0201558025,LCCN:93005405");
         CloseableHttpResponse response = httpclient.execute(httpget);
         try {
-            System.out.println(response.getAllHeaders().toString());
+            System.out.println(response.toString());
         } finally {
             response.close();
         }
         return new Book();
     }
-
-
 }
