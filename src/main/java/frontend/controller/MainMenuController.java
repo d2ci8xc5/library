@@ -20,6 +20,11 @@ import javafx.stage.Stage;
 import java.io.File;
 import java.io.IOException;
 
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.attribute.BasicFileAttributes;
+
+
 /**
  * Component Controller, allocates user actions to events
  */
@@ -27,15 +32,27 @@ public class MainMenuController {
 
     final static private String TAGIDENTIFIER = "tag:";
     // Form components
-    @FXML private AnchorPane ap;
-    @FXML private Menu actions;
-    @FXML public MenuItem addFile;
-    @FXML public MenuItem addBibtex;
-    @FXML private MenuItem remove;
-    @FXML private MenuItem close;
-    @FXML private MenuItem about;
-    @FXML private TextField search;
-    @FXML private TableView table;
+
+    @FXML
+    private AnchorPane ap;
+    @FXML
+    private Menu actions;
+    @FXML
+    private MenuItem add;
+    @FXML
+    private MenuItem addFile;
+    @FXML
+    private MenuItem addBibtex;
+    @FXML
+    private MenuItem about;
+    @FXML
+    private MenuItem remove;
+    @FXML
+    private MenuItem close;
+    @FXML
+    private TextField search;
+    @FXML
+    private TableView table;
 
     /**
      * Initialize the scene component actions
@@ -60,18 +77,41 @@ public class MainMenuController {
                                     result[0] = scrape.getValue();
 
                                     // ISBN not found
-                                    if(result[0] == null) {
+                                    if (result[0] == null) {
                                         Alert alert = new Alert(Alert.AlertType.ERROR);
                                         alert.setContentText("No ISBN number found");
                                     }
+                                }
+                            });
+                });
 
+        add.setOnAction(event -> {
+            FileChooser fc = new FileChooser();
+            File file = fc.showOpenDialog(new Stage());
+            String path = file.getAbsolutePath();
+            BasicFileAttributes attr = null;
+            try {
+                attr = Files.readAttributes(file.toPath(), BasicFileAttributes.class);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            double bookSize  = attr.size()/100000;
+            System.out.println("size: " + bookSize);
+            ScrapeISBN scrape = new ScrapeISBN(file);
+            final String[] result = new String[1];
+            scrape.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED,
+                    new EventHandler<WorkerStateEvent>() {
+                        @Override
+                        public void handle(WorkerStateEvent event) {
+                            result[0] = scrape.getValue();
+                            System.out.println(result[0]);
                                     // perform api lookup
                                     OpenLibrary api = new OpenLibrary(result[0]);
 
-                                }
-                            });
-                    Platform.runLater(scrape);
-                });
+                        }
+                    });
+            Platform.runLater(scrape);
+        });
 
         addBibtex.setOnAction(event -> {
             Parent root;
@@ -90,10 +130,10 @@ public class MainMenuController {
         search.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
-                if(event.getCode() == KeyCode.ENTER) {
+                if (event.getCode() == KeyCode.ENTER) {
                     String text = search.getText();
 
-                    if(text.contains(TAGIDENTIFIER)) {
+                    if (text.contains(TAGIDENTIFIER)) {
                         System.out.println("search by tag");
 
                         // get all entries in the database by a tag (make this async)?
