@@ -6,6 +6,10 @@ import javafx.application.Platform;
 import javafx.concurrent.WorkerStateEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -14,21 +18,25 @@ import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 
 /**
  * Component Controller, allocates user actions to events
  */
-public class MainSceneController {
+public class MainMenuController {
 
-    final private String TAGIDENTIFIER = "tag:";
+    final static private String TAGIDENTIFIER = "tag:";
     // Form components
     @FXML private AnchorPane ap;
     @FXML private Menu actions;
-    @FXML private MenuItem add;
+    @FXML public MenuItem addFile;
+    @FXML public MenuItem addBibtex;
     @FXML private MenuItem remove;
     @FXML private MenuItem close;
+    @FXML private MenuItem about;
     @FXML private TextField search;
     @FXML private TableView table;
+
     /**
      * Initialize the scene component actions
      */
@@ -39,7 +47,7 @@ public class MainSceneController {
             stage.close();
         }));
 
-        add.setOnAction(event -> {
+        addFile.setOnAction(event -> {
                     FileChooser fc = new FileChooser();
                     File file = fc.showOpenDialog(new Stage());
 
@@ -65,7 +73,21 @@ public class MainSceneController {
                     Platform.runLater(scrape);
                 });
 
-            search.setOnKeyPressed(new EventHandler<KeyEvent>() {
+        addBibtex.setOnAction(event -> {
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getResource("../form/AddBook.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("Bibtex Entry");
+                stage.setScene(new Scene(root, 450, 450));
+                stage.show();
+            }
+            catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
+
+        search.setOnKeyPressed(new EventHandler<KeyEvent>() {
             @Override
             public void handle(KeyEvent event) {
                 if(event.getCode() == KeyCode.ENTER) {
@@ -83,6 +105,20 @@ public class MainSceneController {
 
                     }
                 }
+            }
+        });
+
+        about.setOnAction(event -> {
+            Parent root;
+            try {
+                root = FXMLLoader.load(getClass().getResource("../form/About.fxml"));
+                Stage stage = new Stage();
+                stage.setTitle("About");
+                stage.setScene(new Scene(root, 200,200));
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
             }
         });
 

@@ -1,7 +1,6 @@
 package frontend;
 
 import core.api.OpenLibrary;
-import core.task.ScrapeISBN;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
@@ -9,8 +8,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-import java.io.File;
-import java.io.IOException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,8 +18,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("form/sample.fxml"));
-        primaryStage.setTitle("library");
+        Parent root = FXMLLoader.load(getClass().getResource("form/MainMenu.fxml"));
+        primaryStage.setTitle("Library");
         primaryStage.setScene(new Scene(root, 500, 500));
         primaryStage.show();
     }
